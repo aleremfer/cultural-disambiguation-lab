@@ -1,4 +1,4 @@
-(ns cultural-disambiguation-lab.rules.disambiguation)
+(ns cultural_disambiguation_lab.rules.disambiguation)
 
 (defn should-ask-clarification?
   "Returns true when the expected behavior is to ask for clarification."

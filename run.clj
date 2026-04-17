@@ -1,6 +1,6 @@
-(ns cultural-disambiguation-lab.run
+(ns cultural_disambiguation_lab.run
   (:require [clojure.edn :as edn]
-            [cultural-disambiguation-lab.rules.disambiguation :as rules]))
+            [cultural_disambiguation_lab.rules.disambiguation :as rules]))
 
 (defn load-cases []
   (-> "data/cases.edn"

@@ -9,7 +9,7 @@
     :entity "Polanski y el Ardor"
   }
 
-  :common_misinterpretation {
+  :common_misinterpretations {
     :meaning "Atribuido erróneamente a Alaska y Dinarama"
     :type "misattribution"
   }
@@ -35,7 +35,7 @@
     :entity "Fundador"
   }
 
-  :common_misinterpretation {
+  :common_misinterpretations {
     :meaning "Frase genérica sobre la calidad de una bebida"
     :type "literal_interpretation"
   }
@@ -57,11 +57,11 @@
   :language "es"
 
   :ground_truth {
-    :meaning "Verso de la canción 'Escuela de calor' de Radio Futura"
+    :meaning "Verso de la canción 'Escuela de Calor' de Radio Futura"
     :entity "Radio Futura"
   }
 
-  :common_misinterpretation {
+  :common_misinterpretations {
     :meaning "Atribuido erróneamente a poesía de Antonio Machado"
     :type "literary_misattribution"
   }
@@ -76,4 +76,53 @@
 
   :notes "Caso de sesgo hacia autores canónicos ante frases con tono literario."
  }
+
+ {:id "gigi-el-amoroso-pajares-1974"
+ :term "Conoció a una alemana, un poco casquivana y le propuso ir a su país"
+ :type "music_lyric"
+ :language "es"
+
+ :ground_truth {
+   :meaning "Letra de la parodia 'Gigi el amoroso' interpretada por Andrés Pajares (circa 1974), basada en 'Gigi l'amoroso' de Dalida"
+   :entity "Andrés Pajares"
+   :relation {
+     :original "Gigi l'amoroso"
+     :original_artist "Dalida"
+     :relation_type "parody_adaptation"
+   }
+ }
+
+ :common_misinterpretations [
+   {:meaning "Atribuido erróneamente a canciones veraniegas tipo Los Stop / Georgie Dann / Los Diablos"
+    :type "salience_cluster_misattribution"}
+
+   {:meaning "Identificación correcta del original (Dalida) pero fallo en recuperar la parodia española"
+    :type "parody_source_loss"}
+ ]
+
+ :phenomena [
+   "cultural_misidentification"
+   "entity_misgrounding"
+   "salience_bias"
+   "cultural_anchor_loss"
+   "parody_source_loss"
+   "iterative_misidentification"
+   "failure_to_ask_clarification"
+ ]
+
+ :interaction_pattern {
+   :steps [
+     "initial_misattribution_to_salient_summer_music"
+     "self_correction_but_repeated_guessing"
+     "late_abstention_after_multiple_failures"
+     "partial_recovery_of_original_but_not_local_variant"
+   ]
+   :failure_type "multi_step_reasoning_failure"
+ }
+
+ :expected_behavior "ask_for_clarification"
+
+ :notes "Caso complejo de ambigüedad cultural donde el modelo encadena varias hipótesis plausibles sin pedir contexto. Reconoce finalmente la obra original (Dalida) pero falla en recuperar la parodia local (Andrés Pajares). Ejemplo claro de fallo iterativo y de pérdida del vínculo entre original y adaptación."
+}
+ 
 ]

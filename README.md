@@ -10,17 +10,17 @@ Large language models often struggle with **cultural references that are implici
 
 In Spanish popular culture, this includes:
 
-* music references
-* advertising slogans
-* TV and comedy catchphrases
-* colloquial expressions tied to specific eras or contexts
+- music references  
+- advertising slogans  
+- TV and comedy catchphrases  
+- colloquial expressions tied to specific eras or contexts  
 
-These cases are not standard factual errors, but **failures of cultural grounding**. They often involve:
+These are not standard factual errors, but **failures of cultural grounding**, often involving:
 
-* **Cultural Anchor Loss**
-* **Entity Misgrounding**
-* **Literalization of non-literal expressions**
-* **Overconfident interpretation under ambiguity**
+- **Cultural Anchor Loss**  
+- **Entity Misgrounding**  
+- **Literalization of non-literal expressions**  
+- **Overconfident interpretation under ambiguity**  
 
 This repository explores **how to model and resolve these ambiguities using explainable, symbolic approaches**, rather than relying solely on opaque machine learning systems.
 
@@ -30,25 +30,25 @@ This repository explores **how to model and resolve these ambiguities using expl
 
 Most NLP systems rely heavily on:
 
-* statistical associations
-* surface similarity
-* web-indexed knowledge
+- statistical associations  
+- surface similarity  
+- web-indexed knowledge  
 
 However, cultural references often:
 
-* have **low visibility in structured data**
-* depend on **shared context or generational memory**
-* are **ambiguous by design**
+- have **low visibility in structured data**  
+- depend on **shared context or generational memory**  
+- are **ambiguous by design**  
 
 As a result, LLMs may:
 
-* invent plausible but incorrect entities
-* misattribute references
-* interpret figurative language literally
+- invent plausible but incorrect entities  
+- misattribute references  
+- interpret figurative language literally  
 
 This project aims to:
 
-> **formalize cultural ambiguity as a tractable problem**
+> **formalize cultural ambiguity as a tractable problem**  
 > and explore **transparent ways to reason about it**
 
 ---
@@ -57,15 +57,15 @@ This project aims to:
 
 The core idea is to build a **small, explainable system** based on:
 
-* symbolic representations (EDN / data structures)
-* explicit disambiguation rules
-* controlled example sets
+- symbolic representations (EDN / data structures)  
+- explicit disambiguation rules  
+- controlled example sets  
 
-Rather than asking:
+Instead of asking:
 
 > “What is the most likely meaning?”
 
-We ask:
+we ask:
 
 > “What are the possible meanings, and how do we justify selecting one?”
 
@@ -75,37 +75,48 @@ We ask:
 
 This project uses **Clojure** as an experimental environment for:
 
-* representing rules as data
-* building small domain-specific logic systems
-* keeping the system **fully inspectable and explainable**
+- representing rules as data  
+- building small domain-specific logic systems  
+- keeping the system **fully inspectable and explainable**  
 
 Clojure enables a tight loop between:
 
-* data
-* rules
-* evaluation
+- data  
+- rules  
+- evaluation  
 
 which is well-suited for semantic and cultural reasoning tasks.
 
 ---
 
-## Scope
+## Run locally
 
-This repository focuses on:
-
-* Spanish popular culture (primarily late 20th – early 21st century)
-* real, verifiable references (no synthetic or invented cases)
-* ambiguity that arises in natural language usage
+```bash
+git clone https://github.com/aleremfer/cultural-disambiguation-lab.git
+cd cultural-disambiguation-lab
+clojure -M -m cultural_disambiguation_lab.run
 
 ---
 
-## Status
+## Example Output
 
-Early-stage project. Initial goals:
+=== Case summaries ===
 
-* define a minimal data format (EDN)
-* implement basic disambiguation rules
-* document representative cases
+ID: gigi-el-amoroso-pajares-1974  
+Term: Conoció a una alemana, un poco casquivana y le propuso ir a su país  
+Decision: ask_for_clarification  
+Reason: cultural ambiguity detected  
+Phenomena: ["cultural_misidentification" "parody_source_loss"]
+
+=== Phenomena counts ===
+
+cultural_anchor_loss: 4  
+entity_misgrounding: 5  
+salience_bias: 4  
+
+=== Cases requiring clarification ===
+
+Total: 6
 
 ---
 

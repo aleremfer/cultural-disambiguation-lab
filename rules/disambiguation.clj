@@ -25,8 +25,9 @@
    :term (:term case)
    :type (:type case)
    :ground_truth (:ground_truth case)
-   :common_misinterpretation (:common_misinterpretation case)
-   :expected_behavior (:expected_behavior case)})
+   :common_misinterpretations (:common_misinterpretations case)
+   :expected_behavior (:expected_behavior case)
+   :phenomena (:phenomena case)})
 
 (defn explain-decision
   "Returns a human-readable explanation for the decision."
@@ -34,4 +35,5 @@
   (let [decision (decision-for-case case)]
     (str "Term: " (:term decision)
          " | Decision: " (:decision decision)
-         " | Reason: " (:reason decision))))
+         " | Reason: " (:reason decision)
+         " | Phenomena: " (:phenomena decision))))

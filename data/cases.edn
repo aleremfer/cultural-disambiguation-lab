@@ -9,10 +9,10 @@
     :entity "Polanski y el Ardor"
   }
 
-  :common_misinterpretations {
-    :meaning "Atribuido erróneamente a Alaska y Dinarama"
-    :type "misattribution"
-  }
+  :common_misinterpretations [
+    {:meaning "Atribuido erróneamente a Alaska y Dinarama"
+     :type "misattribution"}
+  ]
 
   :phenomena [
     "cultural_misidentification"
@@ -35,10 +35,10 @@
     :entity "Fundador"
   }
 
-  :common_misinterpretations {
-    :meaning "Frase genérica sobre la calidad de una bebida"
-    :type "literal_interpretation"
-  }
+  :common_misinterpretations [
+    {:meaning "Frase genérica sobre la calidad de una bebida"
+     :type "literal_interpretation"}
+  ]
 
   :phenomena [
     "cultural_anchor_loss"
@@ -61,10 +61,10 @@
     :entity "Radio Futura"
   }
 
-  :common_misinterpretations {
-    :meaning "Atribuido erróneamente a poesía de Antonio Machado"
-    :type "literary_misattribution"
-  }
+  :common_misinterpretations [
+    {:meaning "Atribuido erróneamente a poesía de Antonio Machado"
+     :type "literary_misattribution"}
+  ]
 
   :phenomena [
     "cultural_misidentification"
@@ -78,51 +78,115 @@
  }
 
  {:id "gigi-el-amoroso-pajares-1974"
- :term "Conoció a una alemana, un poco casquivana y le propuso ir a su país"
- :type "music_lyric"
- :language "es"
+  :term "Conoció a una alemana, un poco casquivana y le propuso ir a su país"
+  :type "music_lyric"
+  :language "es"
 
- :ground_truth {
-   :meaning "Letra de la parodia 'Gigi el amoroso' interpretada por Andrés Pajares (circa 1974), basada en 'Gigi l'amoroso' de Dalida"
-   :entity "Andrés Pajares"
-   :relation {
-     :original "Gigi l'amoroso"
-     :original_artist "Dalida"
-     :relation_type "parody_adaptation"
-   }
+  :ground_truth {
+    :meaning "Letra de la parodia 'Gigi el amoroso' interpretada por Andrés Pajares (circa 1974), basada en 'Gigi l'amoroso' de Dalida"
+    :entity "Andrés Pajares"
+    :relation {
+      :original "Gigi l'amoroso"
+      :original_artist "Dalida"
+      :relation_type "parody_adaptation"
+    }
+  }
+
+  :common_misinterpretations [
+    {:meaning "Atribuido erróneamente a canciones veraniegas tipo Los Stop / Georgie Dann / Los Diablos"
+     :type "salience_cluster_misattribution"}
+
+    {:meaning "Identificación correcta del original (Dalida) pero fallo en recuperar la parodia española"
+     :type "parody_source_loss"}
+  ]
+
+  :phenomena [
+    "cultural_misidentification"
+    "entity_misgrounding"
+    "salience_bias"
+    "cultural_anchor_loss"
+    "parody_source_loss"
+    "iterative_misidentification"
+    "failure_to_ask_clarification"
+  ]
+
+  :interaction_pattern {
+    :steps [
+      "initial_misattribution_to_salient_summer_music"
+      "self_correction_but_repeated_guessing"
+      "late_abstention_after_multiple_failures"
+      "partial_recovery_of_original_but_not_local_variant"
+    ]
+    :failure_type "multi_step_reasoning_failure"
+  }
+
+  :expected_behavior "ask_for_clarification"
+
+  :notes "Caso complejo de ambigüedad cultural donde el modelo encadena varias hipótesis plausibles sin pedir contexto. Reconoce finalmente la obra original (Dalida) pero falla en recuperar la parodia local (Andrés Pajares). Ejemplo claro de fallo iterativo y de pérdida del vínculo entre original y adaptación."
  }
 
- :common_misinterpretations [
-   {:meaning "Atribuido erróneamente a canciones veraniegas tipo Los Stop / Georgie Dann / Los Diablos"
-    :type "salience_cluster_misattribution"}
+ {:id "ozores-gibraltar-penon-1985"
+  :term "¡Y Gibraltar siempre será un peñón!"
+  :type "cultural_phrase"
+  :language "es"
 
-   {:meaning "Identificación correcta del original (Dalida) pero fallo en recuperar la parodia española"
-    :type "parody_source_loss"}
- ]
+  :ground_truth {
+    :meaning "Coletilla o remate humorístico asociado a Antonio Ozores en sus intervenciones cómicas en 'Un, dos, tres... responda otra vez' (circa 1985)"
+    :entity "Antonio Ozores"
+    :source "Un, dos, tres... responda otra vez"
+    :domain "tv_humor_spain_1980s"
+    :period "circa 1985"
+  }
 
- :phenomena [
-   "cultural_misidentification"
-   "entity_misgrounding"
-   "salience_bias"
-   "cultural_anchor_loss"
-   "parody_source_loss"
-   "iterative_misidentification"
-   "failure_to_ask_clarification"
- ]
+  :common_misinterpretations [
+    {:meaning "Atribuida erróneamente a una canción patriótica o épico-costumbrista, por ejemplo en la órbita de José Luis Perales"
+     :type "salience_cluster_misattribution"}
 
- :interaction_pattern {
-   :steps [
-     "initial_misattribution_to_salient_summer_music"
-     "self_correction_but_repeated_guessing"
-     "late_abstention_after_multiple_failures"
-     "partial_recovery_of_original_but_not_local_variant"
-   ]
-   :failure_type "multi_step_reasoning_failure"
+    {:meaning "Interpretada como frase política o patriótica genérica sin autor concreto"
+     :type "decontextualized_political_reading"}
+  ]
+
+  :phenomena [
+    "cultural_anchor_loss"
+    "entity_misgrounding"
+    "salience_bias"
+    "cultural_misidentification"
+  ]
+
+  :expected_behavior "ask_for_clarification"
+
+  :notes "Caso de alta plausibilidad superficial: la frase suena compatible con canción, slogan o comentario patriótico, pero el anclaje correcto pertenece al humor televisivo de Antonio Ozores."
  }
 
- :expected_behavior "ask_for_clarification"
+ {:id "busque-compare-colon-1980s"
+  :term "Busque, compare, y si encuentra algo mejor, cómprelo"
+  :type "advertising_slogan"
+  :language "es"
 
- :notes "Caso complejo de ambigüedad cultural donde el modelo encadena varias hipótesis plausibles sin pedir contexto. Reconoce finalmente la obra original (Dalida) pero falla en recuperar la parodia local (Andrés Pajares). Ejemplo claro de fallo iterativo y de pérdida del vínculo entre original y adaptación."
-}
- 
+  :ground_truth {
+    :meaning "Eslogan publicitario del detergente Colón, muy popular en España durante los años 80"
+    :entity "Colón"
+    :domain "spanish_advertising_1980s"
+    :period "1980s"
+  }
+
+  :common_misinterpretations [
+    {:meaning "Atribuido erróneamente al coñac Fundador"
+     :type "entity_misgrounding"}
+
+    {:meaning "Asociado erróneamente a José Luis López Vázquez como imagen publicitaria"
+     :type "cross_case_contamination"}
+  ]
+
+  :phenomena [
+    "entity_misgrounding"
+    "cross_case_contamination"
+    "salience_bias"
+    "cultural_anchor_loss"
+  ]
+
+  :expected_behavior "ask_for_clarification"
+
+  :notes "Caso claro de contaminación entre anclas culturales vecinas: el modelo activa el clúster de publicidad clásica española y fusiona incorrectamente el eslogan de Colón con el universo publicitario de Fundador."
+ }
 ]

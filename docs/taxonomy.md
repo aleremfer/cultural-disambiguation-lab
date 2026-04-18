@@ -16,7 +16,10 @@ Instead, they are better understood as:
 
 A key issue across cases is:
 
-> **failure to request clarification when multiple plausible interpretations exist**
+> failure to request clarification when multiple plausible interpretations exist  
+
+In more complex cases, this failure becomes iterative, with the model continuing to generate plausible but incorrect hypotheses instead of adapting its strategy.
+
 
 ---
 
@@ -125,6 +128,82 @@ Expected behavior in such cases:
 
 > ask the user to disambiguate between multiple plausible interpretations
 
+#### Iterative Failure to Ask for Clarification
+
+A more severe form of this failure occurs when the model:
+
+- produces multiple plausible but incorrect hypotheses  
+- receives corrective feedback  
+- continues to generate new guesses instead of switching strategy  
+
+In these cases, the model fails to transition from:
+
+> answer generation  
+
+to:
+
+> clarification request  
+
+This results in:
+
+- cascading misidentifications  
+- overconfident iterative guessing  
+- delayed or absent abstention  
+
+This pattern is especially common in culturally ambiguous contexts with multiple plausible anchors, and is explicitly modeled in this repository's dataset.
+
+---
+
+### 8. Parody Source Loss
+
+Failure to correctly link a cultural reference to its parodic or derivative form.
+
+The model may:
+
+- correctly identify the original source  
+- fail to retrieve the local adaptation or parody  
+- collapse both into a single referent  
+
+This reflects a loss of relational structure between:
+
+> original work ↔ adaptation ↔ parody  
+
+**Typical patterns:**
+
+- identifying the original international work but not its local version  
+- ignoring culturally specific reinterpretations  
+- prioritizing canonical sources over local variants  
+
+This failure is particularly relevant in domains where parody and adaptation are common, such as:
+
+- music  
+- television  
+- comedy and revue  
+
+---
+
+### 9. Cross-Case Contamination
+
+Failure where the model incorrectly combines elements from multiple culturally related references.
+
+Instead of selecting a single plausible interpretation, the model:
+
+- activates a cultural cluster (e.g. advertising, music, TV)  
+- retrieves elements from different cases within that cluster  
+- merges them into a single, coherent but incorrect response  
+
+**Typical patterns:**
+
+- mixing slogans from different brands  
+- combining entities from related cultural domains  
+- attributing a phrase correctly but linking it to the wrong context or persona  
+
+This results in outputs that are:
+
+- semantically plausible  
+- culturally coherent at a superficial level  
+- but factually incorrect due to cross-case blending  
+
 ---
 
 ## Intended Use
@@ -145,6 +224,26 @@ This taxonomy is intentionally:
 * **minimal** → easy to apply
 * **interpretable** → no hidden assumptions
 * **extensible** → new categories can be added as needed
+
+It reflects a working hypothesis:
+
+> cultural ambiguity is a distinct and underexplored failure mode in language models
+
+
+## Label Mapping (EDN ↔ Taxonomy)
+
+The following labels are used in the dataset (`cases.edn`) and map directly to the categories defined above:
+
+- cultural_misidentification → Cultural Misidentification  
+- entity_misgrounding → Entity Misgrounding  
+- cultural_anchor_loss → Cultural Anchor Loss  
+- literalization_risk → Literalization Risk  
+- salience_bias → Salience Bias  
+- literary_bias → Literary Bias  
+- failure_to_ask_clarification → Failure to Ask for Clarification  
+- iterative_misidentification → Iterative Failure to Ask for Clarification  
+- parody_source_loss → Parody Source Loss  
+
 
 It reflects a working hypothesis:
 

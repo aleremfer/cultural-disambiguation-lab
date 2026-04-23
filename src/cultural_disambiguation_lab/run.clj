@@ -50,7 +50,7 @@
       (println (str "- " (:id case) " -> " (:term case))))))
 
 ;; --------------------------------------------------
-;; Observations
+;; Observations 
 ;; --------------------------------------------------
 
 (defn observations-by-case [observations]

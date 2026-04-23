@@ -1,0 +1,395 @@
+[
+ ;; =========================
+ ;; FUNDADOR (JINGLE)
+ ;; =========================
+ {:id "obs-fundador-01"
+  :case_id "fundador-jingle-1960s"
+  :model "gpt-5"
+  :date "2025-12-13"
+  :prompt "Está como nunca, el coñac que mejor sabe"
+  :response_summary "No identificado correctamente como jingle de Fundador."
+  :response_type "incorrect"
+  :response_mode "initial_answer"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "cultural_anchor_loss"
+    "entity_misgrounding"
+  ]
+  :confidence "high"
+  :notes "Caso típico de pérdida de anclaje en contenido publicitario sonoro no textualizado."}
+
+ ;; =========================
+ ;; OBJETIVO BI-KI-NI
+ ;; =========================
+ {:id "obs-objetivo-bikini-01"
+  :case_id "objetivo-bikini-celtibero-film-1968"
+  :model "gpt-5"
+  :date "2026-01-02"
+  :prompt "Yo soy celtíbero, celtíbero y español..."
+  :response_summary "Atribuida erróneamente a Torrente."
+  :response_type "incorrect"
+  :response_mode "initial_answer"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "cultural_misidentification"
+    "entity_misgrounding"
+    "salience_bias"
+  ]
+  :confidence "high"
+  :notes "Confusión por proximidad conceptual entre arquetipos culturales."}
+
+ {:id "obs-objetivo-bikini-02"
+  :case_id "objetivo-bikini-celtibero-film-1968"
+  :model "gpt-5"
+  :date "2026-01-02"
+  :prompt "Es de 'Objetivo Bi-ki-ni' de Mariano Ozores."
+  :response_summary "Corrección completa con identificación de película y actor."
+  :response_type "correct"
+  :response_mode "corrected_after_feedback"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "corrected_answer"
+  :observed_phenomena []
+  :confidence "high"
+  :notes "Corrección dependiente de intervención externa."}
+
+ ;; =========================
+ ;; GIGI EL AMOROSO
+ ;; =========================
+ {:id "obs-gigi-01"
+  :case_id "gigi-el-amoroso-pajares-1974"
+  :model "gpt-5"
+  :date "2026-04-18"
+  :prompt "Conoció a una alemana, un poco casquivana y le propuso ir a su país"
+  :response_summary "Atribución errónea inicial a canciones ligeras/veraniegas españolas (Georgie Dann, Los Stop, Los Diablos)."
+  :response_type "incorrect"
+  :response_mode "initial_answer"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "cultural_misidentification"
+    "entity_misgrounding"
+    "salience_bias"
+    "failure_to_ask_clarification"
+  ]
+  :confidence "high"
+  :notes "Cadena de hipótesis plausibles dentro del clúster de canción ligera española sin frenar a tiempo."}
+
+ {:id "obs-gigi-02"
+  :case_id "gigi-el-amoroso-pajares-1974"
+  :model "gpt-5"
+  :date "2026-04-18"
+  :prompt "Es una parodia española de una canción cantada por una mujer."
+  :response_summary "Reduce el espacio de búsqueda pero no identifica correctamente la obra; mantiene incertidumbre parcial."
+  :response_type "partial"
+  :response_mode "corrected_after_feedback"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "partial_answer"
+  :observed_phenomena [
+    "parody_source_loss"
+    "entity_misgrounding"
+  ]
+  :confidence "medium"
+  :notes "Empieza a detectar la estructura original/parodia, pero aún no recupera el referente correcto."}
+
+ {:id "obs-gigi-03"
+  :case_id "gigi-el-amoroso-pajares-1974"
+  :model "gpt-5"
+  :date "2026-04-18"
+  :prompt "Ya llega Gigi..."
+  :response_summary "Identifica correctamente la canción original 'Gigi l’amoroso' de Dalida, pero no la parodia local."
+  :response_type "partial"
+  :response_mode "corrected_after_feedback"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "parody_source_loss"
+    "cultural_anchor_loss"
+  ]
+  :confidence "high"
+  :notes "Recupera la fuente prestigiosa/internacional, pero pierde la derivación humorística española."}
+
+ {:id "obs-gigi-04"
+  :case_id "gigi-el-amoroso-pajares-1974"
+  :model "gpt-5"
+  :date "2026-04-18"
+  :prompt "Has identificado la original, pero no la parodia."
+  :response_summary "Corrección final: reconoce 'Gigi el amoroso' de Andrés Pajares como parodia española."
+  :response_type "correct"
+  :response_mode "corrected_after_feedback"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "corrected_answer"
+  :observed_phenomena []
+  :confidence "high"
+  :notes "La resolución completa solo llega tras intervención explícita del usuario."}
+
+ ;; =========================
+ ;; SUÁREZ
+ ;; =========================
+ {:id "obs-suarez-01"
+  :case_id "suarez-prometo-politics-1977"
+  :model "gpt-5"
+  :date "2026-04-21"
+  :prompt "Puedo prometer y prometo"
+  :response_summary "Identificación correcta de Adolfo Suárez y contexto de 1977."
+  :response_type "correct"
+  :response_mode "initial_answer"
+  :expected_behavior "direct_identification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena []
+  :confidence "high"
+  :notes "Unidad cultural extremadamente consolidada."}
+
+ ;; =========================
+ ;; POLANSKI Y EL ARDOR
+ ;; =========================
+ {:id "obs-polanski-01"
+  :case_id "polanski-ardor-1982"
+  :model "gpt-5"
+  :date "2026-03-20"
+  :prompt "No tengo novia y no me mola el pacto de Varsovia"
+  :response_summary "No identificado correctamente; deriva hacia interpretaciones plausibles."
+  :response_type "incorrect"
+  :response_mode "initial_answer"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "cultural_misidentification"
+    "entity_misgrounding"
+    "salience_bias"
+  ]
+  :confidence "high"
+  :notes "Caso de cola larga con baja trazabilidad textual."}
+
+ ;; =========================
+ ;; RADIO FUTURA
+ ;; =========================
+ {:id "obs-radiofutura-01"
+  :case_id "escuela-de-calor-radio-futura-1984"
+  :model "gpt-5"
+  :date "2026-03-05"
+  :prompt "Arde la calle al sol de poniente"
+  :response_summary "Atribuciones incorrectas dentro del mismo entorno musical."
+  :response_type "incorrect"
+  :response_mode "initial_answer"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "cultural_misidentification"
+    "entity_misgrounding"
+    "salience_bias"
+  ]
+  :confidence "high"
+  :notes "Reconocimiento del movimiento cultural pero fallo en entidad concreta."}
+
+ ;; =========================
+ ;; OZORES GIBRALTAR
+ ;; =========================
+ {:id "obs-gibraltar-01"
+  :case_id "ozores-gibraltar-penon-1985"
+  :model "gpt-5"
+  :date "2026-04-10"
+  :prompt "¡Y Gibraltar siempre será un peñón!"
+  :response_summary "Atribuida erróneamente a canción de José Luis Perales o un posible discurso político."
+  :response_type "incorrect"
+  :response_mode "initial_answer"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "entity_misgrounding"
+    "salience_bias"
+    "cultural_misidentification"
+  ]
+  :confidence "high"
+  :notes "Desplazamiento hacia dominios más frecuentes."}
+
+ {:id "obs-gibraltar-02"
+  :case_id "ozores-gibraltar-penon-1985"
+  :model "gpt-5"
+  :date "2026-04-17"
+  :prompt "Es una frase usada por Antonio Ozores con la que terminaba sus actos cómicos (circa 1985) en el popularísimo programa de TVE Un dos tres"
+  :response_summary "Corrección completa del origen."
+  :response_type "correct"
+  :response_mode "corrected_after_feedback"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "corrected_answer"
+  :observed_phenomena []
+  :confidence "high"
+  :notes "Dependencia de pista explícita."}
+
+ ;; =========================
+ ;; COLÓN
+ ;; =========================
+ {:id "obs-colon-01"
+  :case_id "busque-compare-colon-1980s"
+  :model "gpt-5"
+  :date "2026-04-17"
+  :prompt "Busque, compare y si encuentra algo mejor..."
+  :response_summary "Mezcla Colón con Fundador."
+  :response_type "incorrect"
+  :response_mode "initial_answer"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "cross_case_contamination"
+    "entity_misgrounding"
+    "salience_bias"
+  ]
+  :confidence "high"
+  :notes "Caso canónico de contaminación entre anclas cercanas."}
+
+ {:id "obs-colon-02"
+  :case_id "busque-compare-colon-1980s"
+  :model "gpt-5"
+  :date "2026-04-17"
+  :prompt "Has mezclado Colón y Fundador."
+  :response_summary "Reconocimiento del error."
+  :response_type "correct"
+  :response_mode "corrected_after_feedback"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "corrected_answer"
+  :observed_phenomena []
+  :confidence "high"
+  :notes "Buena corrección tras intervención directa."}
+
+ ;; =========================
+ ;; ARRABAL
+ ;; =========================
+ {:id "obs-arrabal-01"
+  :case_id "arrabal-milenarismo-tv-1989"
+  :model "gpt-5"
+  :date "2026-04-21"
+  :prompt "¡Hablemos del milenarismo, cojones ya!"
+  :response_summary "Atribuida erróneamente a 'Cuéntame cómo pasó'."
+  :response_type "incorrect"
+  :response_mode "initial_answer"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "cultural_misidentification"
+    "entity_misgrounding"
+    "cultural_anchor_loss"
+  ]
+  :confidence "high"
+  :notes "Confusión entre documento televisivo real y ficción narrativa."}
+
+ {:id "obs-arrabal-02"
+  :case_id "arrabal-milenarismo-tv-1989"
+  :model "gpt-5"
+  :date "2026-04-21"
+  :prompt "Es de Fernando Arrabal en televisión."
+  :response_summary "Reconoce a Arrabal pero no el contexto exacto."
+  :response_type "partial"
+  :response_mode "corrected_after_feedback"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "corrected_answer"
+  :observed_phenomena [
+    "entity_misgrounding"
+  ]
+  :confidence "medium"
+  :notes "Recuperación parcial del anclaje cultural."}
+
+ ;; =========================
+ ;; FARMACIA DE GUARDIA
+ ;; =========================
+ {:id "obs-romerales-01"
+  :case_id "farmacia-romerales-tv-1992"
+  :model "gpt-5"
+  :date "2026-04-21"
+  :prompt "Para dentro Romerales"
+  :response_summary "Atribuida erróneamente a 'Amanece, que no es poco'."
+  :response_type "incorrect"
+  :response_mode "initial_answer"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "cultural_misidentification"
+    "entity_misgrounding"
+    "salience_bias"
+  ]
+  :confidence "high"
+  :notes "Activación automática del clúster Cuerda."}
+
+ {:id "obs-romerales-02"
+  :case_id "farmacia-romerales-tv-1992"
+  :model "gpt-5"
+  :date "2026-04-21"
+  :prompt "Es de Farmacia de guardia."
+  :response_summary "Corrección posterior."
+  :response_type "correct"
+  :response_mode "corrected_after_feedback"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "corrected_answer"
+  :observed_phenomena []
+  :confidence "high"
+  :notes "Corrección dependiente de intervención."}
+
+ ;; =========================
+ ;; UMBRAL
+ ;; =========================
+ {:id "obs-umbral-01"
+  :case_id "umbral-libro-tv-1993"
+  :model "gpt-5"
+  :date "2026-04-21"
+  :prompt "Yo he venido aquí a hablar de mi libro"
+  :response_summary "Identificación correcta."
+  :response_type "correct"
+  :response_mode "initial_answer"
+  :expected_behavior "direct_identification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena []
+  :confidence "high"
+  :notes "Caso de anclaje perfecto."}
+
+ ;; =========================
+ ;; ABERRONCHO
+ ;; =========================
+ {:id "obs-aberroncho-01"
+  :case_id "aberroncho-rocaje-tv-2010"
+  :model "gpt-4.5"
+  :date "2025-11-29"
+  :prompt "¿Qué pasa si me aberroncho contra el rocaje vivo?"
+  :response_summary "Interpretación literal errónea."
+  :response_type "incorrect"
+  :response_mode "initial_answer"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "literalization_risk"
+    "cultural_anchor_loss"
+  ]
+  :confidence "high"
+  :notes "Fallo en detección de lenguaje humorístico especializado."}
+
+ {:id "obs-aberroncho-02"
+  :case_id "aberroncho-rocaje-tv-2010"
+  :model "gpt-5"
+  :date "2025-11-29"
+  :prompt "Me refiero a aberroncharse."
+  :response_summary "Refuerza interpretación técnica incorrecta."
+  :response_type "incorrect"
+  :response_mode "corrected_after_feedback"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "direct_answer"
+  :observed_phenomena [
+    "failure_to_ask_clarification"
+    "literalization_risk"
+  ]
+  :confidence "high"
+  :notes "Persistencia del error tras feedback."}
+
+ {:id "obs-aberroncho-03"
+  :case_id "aberroncho-rocaje-tv-2010"
+  :model "gpt-5"
+  :date "2025-11-29"
+  :prompt "Es de Paco Collado."
+  :response_summary "Corrección final correcta."
+  :response_type "correct"
+  :response_mode "verified_after_feedback"
+  :expected_behavior "ask_for_clarification"
+  :actual_behavior "verified_answer"
+  :observed_phenomena []
+  :confidence "high"
+  :notes "Corrección tras explicitación del contexto cultural."}
+]

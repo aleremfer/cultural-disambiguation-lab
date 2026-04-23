@@ -1,5 +1,10 @@
 # cultural-disambiguation-lab
+
 A small lab for modeling and resolving cultural ambiguity in Spanish popular culture using explainable methods.
+
+> ⚠️ Note  
+> This project is an experimental lab.  
+> The current runner prints exploratory reports and is intended for inspection, not benchmarking.
 
 ---
 
@@ -19,7 +24,7 @@ These are not standard factual errors, but **failures of cultural grounding**, o
 - **Literalization of non-literal expressions**  
 - **Overconfident interpretation under ambiguity**  
 
-This repository explores **how to model and resolve these ambiguities using explainable, symbolic approaches**, rather than relying solely on opaque machine learning systems.
+This repository explores how to model and resolve these ambiguities using explainable, symbolic approaches rather than opaque machine learning systems.
 
 ---
 
@@ -58,6 +63,27 @@ Instead of asking:
 
 we ask:
 > "What are the possible meanings, and how do we justify selecting one?"
+
+---
+
+## Data Model
+
+The project currently uses two complementary datasets:
+
+- **cases.edn**  
+  A curated set of culturally ambiguous expressions, including expected behavior and associated phenomena.
+
+- **observations.edn**  
+  Real interaction data capturing how language models respond to those cases, including:
+  - response type (correct, incorrect, partial)  
+  - response mode (initial answer vs. corrected after feedback)  
+  - observed phenomena  
+  - confidence and behavior patterns  
+
+Together, these datasets allow comparison between:
+> **expected behavior** and **observed model behavior**
+
+This enables a small but explicit framework for analyzing failure modes in culturally ambiguous contexts.
 
 ---
 

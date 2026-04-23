@@ -1,81 +1,64 @@
 [
- {:id "polanski-ardor-1983"
-  :term "No tengo novia y no me mola el pacto de Varsovia"
-  :type "music_lyric"
-  :language "es"
-
-  :ground_truth {
-    :meaning "Letra de una canción del grupo Polanski y el Ardor (1983)"
-    :entity "Polanski y el Ardor"
-  }
-
-  :common_misinterpretations [
-    {:meaning "Atribuido erróneamente a Alaska y Dinarama"
-     :type "misattribution"}
-  ]
-
-  :phenomena [
-    "cultural_misidentification"
-    "entity_misgrounding"
-    "salience_bias"
-  ]
-
-  :expected_behavior "ask_for_clarification"
-
-  :notes "Referencia musical de la Movida con baja visibilidad y confusión entre grupos contemporáneos."
- }
-
  {:id "fundador-jingle-1960s"
   :term "Está como nunca, está como nunca, está como nunca: ¡Fundador!"
   :type "advertising_jingle"
   :language "es"
 
   :ground_truth {
-    :meaning "Jingle publicitario del coñac Fundador (Pedro Domecq, circa 1964-1966)"
+    :meaning "Jingle publicitario del coñac Fundador, de Pedro Domecq, difundido en los Discos Sorpresa Fundador durante los años 60"
     :entity "Fundador"
+    :source "Discos Sorpresa Fundador"
+    :domain "spanish_advertising_audio_1960s"
+    :period "1960s"
   }
 
   :common_misinterpretations [
-    {:meaning "Frase genérica sobre la calidad de una bebida"
-     :type "literal_interpretation"}
+    {:meaning "Atribuido erróneamente a Bodegas Terry o a otra marca de brandy/coñac"
+     :type "entity_misgrounding"}
+
+    {:meaning "Interpretado como eslogan publicitario genérico sin anclaje de marca concreto"
+     :type "decontextualized_reading"}
   ]
+
+  :visibility "low"
 
   :phenomena [
     "cultural_anchor_loss"
-    "literalization_risk"
-    "low_web_visibility"
+    "entity_misgrounding"
   ]
 
   :expected_behavior "ask_for_clarification"
 
-  :notes "Ejemplo de publicidad sonora con escasa presencia en datos estructurados modernos."
- }
+  :notes "Ejemplo claro de publicidad sonora con escasa presencia en datos estructurados modernos. Caso especialmente vulnerable a misatribución por erosión del soporte original y por confusión entre marcas históricas."}
 
- {:id "escuela-de-calor-radio-futura"
-  :term "Arde en la calle al sol de poniente"
-  :type "music_lyric"
+ {:id "objetivo-bikini-celtibero-film-1968"
+  :term "Yo soy celtíbero, celtíbero y español"
+  :type "film_quote"
   :language "es"
 
   :ground_truth {
-    :meaning "Verso de la canción 'Escuela de Calor' de Radio Futura"
-    :entity "Radio Futura"
+    :meaning "Frase del personaje Acacio Rendueles, interpretado por José Luis López Vázquez, en la película 'Objetivo Bi-ki-ni' dirigida por Mariano Ozores en 1968"
+    :entity "Objetivo Bi-ki-ni"
+    :source "Objetivo Bi-ki-ni"
+    :domain "spanish_popular_cinema_1960s"
+    :period "1968"
   }
 
   :common_misinterpretations [
-    {:meaning "Atribuido erróneamente a poesía de Antonio Machado"
-     :type "literary_misattribution"}
+    {:meaning "Atribuida erróneamente al personaje Torrente por similitud de registro macho-castizo e hiperbólico"
+     :type "salience_cluster_misattribution"}
   ]
 
   :phenomena [
     "cultural_misidentification"
     "entity_misgrounding"
-    "literary_bias"
+    "salience_bias"
+    "cultural_anchor_loss"
   ]
 
   :expected_behavior "ask_for_clarification"
 
-  :notes "Caso de sesgo hacia autores canónicos ante frases con tono literario."
- }
+  :notes "Caso de colisión entre dos ecosistemas cómicos españoles distintos: comedia popular de Ozores frente a caricatura tardía y mucho más saliente como Torrente."}
 
  {:id "gigi-el-amoroso-pajares-1974"
   :term "Conoció a una alemana, un poco casquivana y le propuso ir a su país"
@@ -83,20 +66,22 @@
   :language "es"
 
   :ground_truth {
-    :meaning "Letra de la parodia 'Gigi el amoroso' interpretada por Andrés Pajares (circa 1974), basada en 'Gigi l'amoroso' de Dalida"
+    :meaning "Letra de la parodia 'Gigi el amoroso', interpretada por Andrés Pajares y publicada en 1974, basada en 'Gigi l'amoroso' de Dalida"
     :entity "Andrés Pajares"
     :relation {
       :original "Gigi l'amoroso"
       :original_artist "Dalida"
       :relation_type "parody_adaptation"
     }
+    :domain "spanish_music_parody_1970s"
+    :period "1974"
   }
 
   :common_misinterpretations [
-    {:meaning "Atribuido erróneamente a canciones veraniegas tipo Los Stop / Georgie Dann / Los Diablos"
+    {:meaning "Atribuido erróneamente a canciones ligeras o veraniegas de alta saliencia, como Georgie Dann, Los Stop o Los Diablos"
      :type "salience_cluster_misattribution"}
 
-    {:meaning "Identificación correcta del original (Dalida) pero fallo en recuperar la parodia española"
+    {:meaning "Identificación correcta de la obra original de Dalida, pero fallo en recuperar la parodia española de Andrés Pajares"
      :type "parody_source_loss"}
   ]
 
@@ -112,26 +97,108 @@
 
   :interaction_pattern {
     :steps [
-      "initial_misattribution_to_salient_summer_music"
-      "self_correction_but_repeated_guessing"
-      "late_abstention_after_multiple_failures"
-      "partial_recovery_of_original_but_not_local_variant"
+      "initial_misattribution_to_salient_light_music"
+      "repeated_guessing_within_same_cluster"
+      "late_request_for_more_context"
+      "recovery_of_original_without_local_parody"
     ]
     :failure_type "multi_step_reasoning_failure"
   }
 
   :expected_behavior "ask_for_clarification"
 
-  :notes "Caso complejo de ambigüedad cultural donde el modelo encadena varias hipótesis plausibles sin pedir contexto. Reconoce finalmente la obra original (Dalida) pero falla en recuperar la parodia local (Andrés Pajares). Ejemplo claro de fallo iterativo y de pérdida del vínculo entre original y adaptación."
- }
+  :notes "Caso complejo de ambigüedad cultural donde el modelo encadena varias hipótesis plausibles sin pedir contexto a tiempo. Reconoce finalmente la obra original de Dalida, pero no recupera la parodia local de Andrés Pajares. Ejemplo fuerte de fallo iterativo y pérdida del vínculo original-adaptación-parodia."}
 
- {:id "ozores-gibraltar-penon-1985"
-  :term "¡Y Gibraltar siempre será un peñón!"
-  :type "cultural_phrase"
+ {:id "suarez-prometo-politics-1977"
+  :term "Puedo prometer y prometo"
+  :type "political_catchphrase"
   :language "es"
 
   :ground_truth {
-    :meaning "Coletilla o remate humorístico asociado a Antonio Ozores en sus intervenciones cómicas en 'Un, dos, tres... responda otra vez' (circa 1985)"
+    :meaning "Frase de Adolfo Suárez en el contexto de la campaña de las elecciones generales de 1977"
+    :entity "Adolfo Suárez"
+    :domain "spanish_political_history_transition"
+    :period "1977"
+  }
+
+  :common_misinterpretations [
+    {:meaning "Interpretada como fórmula política genérica sin atribución concreta"
+     :type "decontextualized_political_reading"}
+  ]
+
+  :phenomena []
+
+  :expected_behavior "direct_identification"
+
+  :notes "Caso de frase política extremadamente consolidada en la memoria cultural española. Baseline positivo de alta fuerza de anclaje."}
+
+ {:id "polanski-ardor-1982"
+  :term "No tengo novia y no me mola el pacto de Varsovia"
+  :type "music_lyric"
+  :language "es"
+
+  :ground_truth {
+    :meaning "Letra asociada a 'Ataque preventivo de la URSS', del grupo Polanski y el Ardor"
+    :entity "Polanski y el Ardor"
+    :source "Ataque preventivo de la URSS"
+    :domain "spanish_new_wave_music_1980s"
+    :period "1982"
+  }
+
+  :common_misinterpretations [
+    {:meaning "Atribuido erróneamente a Alaska y Dinarama por proximidad estilística y contexto ochentero"
+     :type "salience_cluster_misattribution"}
+
+    {:meaning "Desviado erróneamente hacia Aviador Dro tras activación parcial del clúster tecno-pop / Guerra Fría"
+     :type "entity_misgrounding"}
+  ]
+
+  :phenomena [
+    "cultural_misidentification"
+    "entity_misgrounding"
+    "salience_bias"
+  ]
+
+  :expected_behavior "ask_for_clarification"
+
+  :notes "Caso de baja visibilidad y alta plausibilidad cultural. La conversación real mostró una dinámica adversarial, con deformación deliberada del nombre del grupo y recuperación tardía del referente correcto."}
+
+ {:id "escuela-de-calor-radio-futura-1984"
+  :term "Arde la calle al sol de poniente"
+  :type "music_lyric"
+  :language "es"
+
+  :ground_truth {
+    :meaning "Verso de la canción 'Escuela de calor' de Radio Futura"
+    :entity "Radio Futura"
+    :source "Escuela de calor"
+    :domain "spanish_pop_music_1980s"
+    :period "1984"
+  }
+
+  :common_misinterpretations [
+    {:meaning "Atribuido erróneamente a canciones culturalmente próximas dentro del mismo ecosistema, como 'La chica de ayer' o 'Enamorado de la moda juvenil'"
+     :type "salience_cluster_misattribution"}
+  ]
+
+  :phenomena [
+    "cultural_misidentification"
+    "entity_misgrounding"
+    "salience_bias"
+    "cultural_anchor_loss"
+  ]
+
+  :expected_behavior "ask_for_clarification"
+
+  :notes "Caso muy útil de misidentificación dentro de un clúster correcto: el modelo reconoce bien el universo Movida / Radio Futura, pero falla en la canción concreta."}
+
+ {:id "ozores-gibraltar-penon-1985"
+  :term "¡Y Gibraltar siempre será un peñón!"
+  :type "tv_comedy_catchphrase"
+  :language "es"
+
+  :ground_truth {
+    :meaning "Coletilla o remate humorístico asociado a Antonio Ozores en sus intervenciones cómicas en 'Un, dos, tres... responda otra vez'"
     :entity "Antonio Ozores"
     :source "Un, dos, tres... responda otra vez"
     :domain "tv_humor_spain_1980s"
@@ -155,8 +222,7 @@
 
   :expected_behavior "ask_for_clarification"
 
-  :notes "Caso de alta plausibilidad superficial: la frase suena compatible con canción, slogan o comentario patriótico, pero el anclaje correcto pertenece al humor televisivo de Antonio Ozores."
- }
+  :notes "Caso de alta plausibilidad superficial: la frase suena compatible con canción, slogan o comentario patriótico, pero el anclaje correcto pertenece al humor televisivo de Antonio Ozores."}
 
  {:id "busque-compare-colon-1980s"
   :term "Busque, compare, y si encuentra algo mejor, cómprelo"
@@ -174,7 +240,7 @@
     {:meaning "Atribuido erróneamente al coñac Fundador"
      :type "entity_misgrounding"}
 
-    {:meaning "Asociado erróneamente a José Luis López Vázquez como imagen publicitaria"
+    {:meaning "Asociado erróneamente a José Luis López Vázquez como imagen publicitaria, por contaminación con otro caso publicitario del mismo clúster"
      :type "cross_case_contamination"}
   ]
 
@@ -187,6 +253,116 @@
 
   :expected_behavior "ask_for_clarification"
 
-  :notes "Caso claro de contaminación entre anclas culturales vecinas: el modelo activa el clúster de publicidad clásica española y fusiona incorrectamente el eslogan de Colón con el universo publicitario de Fundador."
- }
+  :notes "Caso muy claro de contaminación entre anclas culturales vecinas: el modelo activa el clúster de publicidad clásica española y fusiona incorrectamente el eslogan de Colón con el universo publicitario de Fundador."}
+
+ {:id "arrabal-milenarismo-tv-1989"
+  :term "Hablemos del milenarismo, ¡cojones ya!"
+  :type "tv_real_event"
+  :language "es"
+
+  :ground_truth {
+    :meaning "Intervención televisiva real de Fernando Arrabal en TVE, popularizada como el episodio del 'milenarismo'"
+    :entity "Fernando Arrabal"
+    :domain "spanish_tv_real_event_1980s"
+    :period "1989"
+  }
+
+  :common_misinterpretations [
+    {:meaning "Atribuida erróneamente a personajes o escenas de ficción televisiva, como 'Cuéntame cómo pasó'"
+     :type "fictional_misattribution"}
+  ]
+
+  :phenomena [
+    "cultural_misidentification"
+    "entity_misgrounding"
+    "cultural_anchor_loss"
+  ]
+
+  :expected_behavior "ask_for_clarification"
+
+  :notes "Caso de confusión entre evento televisivo real y ficción. La conversación mostró recuperación parcial de la entidad correcta, pero clasificación incorrecta del tipo de fuente en la respuesta inicial."}
+
+ {:id "farmacia-romerales-tv-1992"
+  :term "Para dentro, Romerales"
+  :type "tv_comedy_catchphrase"
+  :language "es"
+
+  :ground_truth {
+    :meaning "Frase del personaje Romerales en la serie 'Farmacia de guardia'"
+    :entity "Farmacia de guardia"
+    :domain "spanish_tv_series_1990s"
+    :period "1991-1995"
+  }
+
+  :common_misinterpretations [
+    {:meaning "Atribuida erróneamente al universo de 'Amanece, que no es poco'"
+     :type "salience_cluster_misattribution"}
+  ]
+
+  :phenomena [
+    "cultural_misidentification"
+    "entity_misgrounding"
+    "cultural_anchor_loss"
+    "salience_bias"
+  ]
+
+  :expected_behavior "ask_for_clarification"
+
+  :notes "Frase breve con tono absurdo que activa incorrectamente el clúster humorístico de Cuerda en lugar de sitcom televisiva."}
+
+ {:id "umbral-libro-tv-1993"
+  :term "Yo he venido aquí a hablar de mi libro"
+  :type "tv_real_event"
+  :language "es"
+
+  :ground_truth {
+    :meaning "Intervención de Francisco Umbral en televisión, en el programa 'Queremos saber', en abril de 1993"
+    :entity "Francisco Umbral"
+    :source "Queremos saber"
+    :domain "spanish_tv_real_event_1990s"
+    :period "1993"
+  }
+
+  :common_misinterpretations [
+    {:meaning "Interpretada como frase genérica de autor egocéntrico sin anclaje televisivo concreto"
+     :type "decontextualized_reading"}
+  ]
+
+  :phenomena []
+
+  :expected_behavior "direct_identification"
+
+  :notes "Caso de anclaje cultural muy fuerte y altamente memetizado. Útil como baseline positivo: intervención televisiva real convertida en cita autónoma."}
+
+ {:id "aberroncho-rocaje-tv-2010"
+  :term "Aberroncharse contra el rocaje vivo"
+  :type "tv_comedy_catchphrase"
+  :language "es"
+
+  :ground_truth {
+    :meaning "Expresión recurrente asociada al personaje cómico 'El Aberroncho', interpretado por Paco Collado en sketches televisivos de humor"
+    :entity "Paco Collado"
+    :domain "spanish_tv_comedy_2000s_2020s"
+    :period "circa 2000s-2020s"
+  }
+
+  :common_misinterpretations [
+    {:meaning "Interpretada literalmente como tecnicismo náutico o expresión arcaizante de navegación"
+     :type "literalization"}
+
+    {:meaning "Leída como expresión física o técnica sin detección de su carácter humorístico y televisivo"
+     :type "decontextualized_literal_reading"}
+  ]
+
+  :phenomena [
+    "literalization_risk"
+    "cultural_anchor_loss"
+    "failure_to_ask_clarification"
+  ]
+
+  :expected_behavior "ask_for_clarification"
+
+  :notes "Caso especialmente valioso de falsa lectura lexicalista: la expresión parece técnica o arcaizante, pero su anclaje correcto es humorístico y televisivo."}
 ]
+
+

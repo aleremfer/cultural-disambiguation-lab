@@ -8,7 +8,7 @@ A small lab for modeling and resolving cultural ambiguity in Spanish popular cul
 
 ---
 
-(https://zenodo.org/badge/DOI/10.5281/zenodo.19729897.svg)](https://doi.org/10.5281/zenodo.19729897)
+![DOI]((https://zenodo.org/badge/DOI/10.5281/zenodo.19729897.svg)](https://doi.org/10.5281/zenodo.19729897)
 
 ## 📄 Paper
 
@@ -16,7 +16,7 @@ This repository is a companion artifact to the paper:
 
 **Cultural Anchor Loss (CAL): A Failure Mode in Large Language Models**
 
-DOI: https://doi.org/10.5281/zenodo.19729897
+https://doi.org/10.5281/zenodo.19729897
 
 ---
 

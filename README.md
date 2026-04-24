@@ -8,6 +8,28 @@ A small lab for modeling and resolving cultural ambiguity in Spanish popular cul
 
 ---
 
+(https://zenodo.org/badge/DOI/10.5281/zenodo.19729897.svg)](https://doi.org/10.5281/zenodo.19729897)
+
+## 📄 Paper
+
+This repository is a companion artifact to the paper:
+
+**Cultural Anchor Loss (CAL): A Failure Mode in Large Language Models**
+
+DOI: https://doi.org/10.5281/zenodo.19729897
+
+---
+
+## 📚 Citation
+
+If you use this dataset or concept, please cite:
+
+Remeseiro Fernández, Alejandro (2026).
+*Cultural Anchor Loss (CAL)*.
+Zenodo. https://doi.org/10.5281/zenodo.19729897
+
+---
+
 ## Overview
 
 Large language models often struggle with **cultural references that are implicit, context-dependent, or weakly represented in structured or searchable data**.
@@ -18,7 +40,7 @@ In Spanish popular culture, this includes:
 - TV and comedy catchphrases  
 - colloquial expressions tied to specific eras or contexts  
 
-These are not standard factual errors, but **failures of cultural grounding**, often involving:
+These are not standard factual errors, but **failures of cultural grounding distinct from factual hallucination**, often involving:
 - **Cultural Anchor Loss**  
 - **Entity Misgrounding**  
 - **Literalization of non-literal expressions**  
@@ -51,6 +73,18 @@ This project aims to:
 
 ---
 
+## Contribution
+
+This project introduces and operationalizes:
+
+- **Cultural Anchor Loss (CAL)** as a distinct failure mode in LLMs  
+- A small, inspectable framework for analyzing cultural ambiguity  
+- A dataset of real model behaviors under ambiguous cultural input  
+
+The goal is not scale, but **clarity and reproducibility of failure patterns**.
+
+---
+
 ## Approach
 
 The core idea is to build a **small, explainable system** based on:
@@ -58,11 +92,10 @@ The core idea is to build a **small, explainable system** based on:
 - explicit disambiguation rules  
 - controlled example sets  
 
-Instead of asking:
-> "What is the most likely meaning?"
+This shift reflects a key limitation of current LLMs:
+> confidence is often driven by familiarity signals rather than verified grounding
 
-we ask:
-> "What are the possible meanings, and how do we justify selecting one?"
+This often leads to plausible but incorrect answers instead of clarification.
 
 ---
 
@@ -99,7 +132,7 @@ Clojure enables a tight loop between:
 - rules  
 - evaluation  
 
-which is well-suited for semantic and cultural reasoning tasks.
+This makes it particularly suitable for studying failure modes where interpretability matters more than performance.
 
 ---
 

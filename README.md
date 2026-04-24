@@ -8,7 +8,7 @@ A small lab for modeling and resolving cultural ambiguity in Spanish popular cul
 
 ---
 
-![DOI]((https://zenodo.org/badge/DOI/10.5281/zenodo.19729897.svg)](https://doi.org/10.5281/zenodo.19729897)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19729897.svg)](https://doi.org/10.5281/zenodo.19729897)
 
 ## 📄 Paper
 

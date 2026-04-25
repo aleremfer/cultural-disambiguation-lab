@@ -12,14 +12,100 @@ The failures described here are **not necessarily hallucinations** in the strict
 
 Instead, they are better understood as:
 
-> **misidentifications under cultural ambiguity**, often combined with overconfident resolution.
+> **misidentifications under cultural ambiguity, where overconfident resolution replaces clarification**
 
-A key issue across cases is:
+In many cases, the model does not lack knowledge entirely, but rather:
 
-> failure to request clarification when multiple plausible interpretations exist  
+- fails to correctly resolve between multiple plausible interpretations  
+- relies on superficial similarity or dominant associations  
+- selects a culturally adjacent but incorrect referent  
 
-In more complex cases, this failure becomes iterative, with the model continuing to generate plausible but incorrect hypotheses instead of adapting its strategy.
+A central issue across cases is:
 
+> **failure to request clarification when multiple plausible interpretations exist under uncertainty**
+
+This is not only a knowledge problem, but a **decision-level failure**.
+
+This failure is frequently accompanied by overconfident responses.
+
+---
+
+## Key Hypothesis
+
+> Cultural ambiguity exposes a distinct class of failure modes in language models, where the primary issue is not missing knowledge, but incorrect resolution under uncertainty.
+
+---
+
+## Conceptual Structure
+
+The categories in this taxonomy operate at different levels. A single failure may involve multiple layers.
+
+### 1. Precursors (Input Interpretation Failures)
+
+Conditions that distort how the input is interpreted before resolution:
+
+- Cultural Anchor Loss  
+- Literalization Risk  
+
+These do not directly produce incorrect answers, but **increase the likelihood of downstream errors**.
+
+---
+
+### 2. Mechanisms (Why the Error Happens)
+
+Underlying processes influencing resolution:
+
+- Salience Bias  
+- Literary Bias  
+- Cross-Case Contamination  
+
+These influence which candidate interpretation is selected among competing plausible options.
+
+---
+
+### 3. Outcomes (What Happens)
+
+Observable result of the model’s response:
+
+- Cultural Misidentification  
+- Entity Misgrounding  
+
+---
+
+### 4. Behavior (Decision-Level Failures)
+
+How the model behaves under ambiguity:
+
+- Failure to Ask for Clarification  
+- Iterative Failure to Seek Clarification  
+
+---
+
+### 5. Cross-Cutting Phenomena
+
+These operate across multiple levels and are not directly annotated in the dataset:
+
+- Overconfidence under Ambiguity  
+
+---
+
+## Interaction Between Categories
+
+These categories are not mutually exclusive.
+
+A single response may involve:
+
+- a precursor (e.g. Cultural Anchor Loss)  
+- a mechanism (e.g. Salience Bias)  
+- an outcome (e.g. Cultural Misidentification)  
+- a behavioral failure (e.g. Failure to Ask for Clarification)  
+
+Understanding failures requires analyzing these layers jointly.
+
+This layered structure helps distinguish between:
+- what failed  
+- why it failed  
+- and how the model behaved under uncertainty  
 
 ---
 
@@ -29,16 +115,11 @@ In more complex cases, this failure becomes iterative, with the model continuing
 
 Incorrect identification of a culturally specific reference.
 
-The model selects a plausible but wrong entity due to:
+The model selects a plausible but incorrect referent due to:
 
-* incomplete cultural grounding
-* superficial similarity
-* weak representation in training data
-
-**Example patterns:**
-
-* attributing a lyric to the wrong artist
-* confusing culturally adjacent entities
+- incomplete cultural grounding  
+- superficial similarity  
+- weak representation in training data  
 
 ---
 
@@ -46,174 +127,142 @@ The model selects a plausible but wrong entity due to:
 
 Failure to correctly link a term or phrase to its intended real-world referent.
 
-This includes:
+Includes:
 
-* mapping to a generic concept instead of a specific entity
-* selecting a high-frequency but incorrect referent
-
-**Typical causes:**
-
-* lack of contextual anchoring
-* dominance of global priors over local knowledge
+- mapping to a generic concept instead of a specific entity  
+- selecting a high-frequency but incorrect referent  
 
 ---
 
-### 3. Cultural Anchor Loss
+### 3. Cultural Anchor Loss (Precursor)
 
 Loss of the original cultural context of a phrase or expression.
 
 The model:
 
-* ignores its origin (media, time period, cultural domain)
-* treats it as a generic or decontextualized statement
+- ignores its origin (media, time period, cultural domain)  
+- treats it as a generic or decontextualized statement  
 
-**Common in:**
+This acts as a **precursor condition** that may lead to:
 
-* advertising slogans
-* TV or comedy catchphrases
-* legacy media references
+- Cultural Misidentification  
+- Entity Misgrounding  
 
 ---
 
-### 4. Literalization Risk
+### 4. Literalization Risk (Precursor)
 
 Interpretation of a non-literal or culturally loaded expression as literal language.
 
 The model fails to detect:
 
-* irony
-* stylization
-* rhetorical intent
-
-**Result:**
-
-* overly literal explanations
-* semantic flattening
+- irony  
+- stylization  
+- rhetorical intent  
 
 ---
 
 ### 5. Salience Bias
 
-Over-reliance on more prominent or widely known entities when resolving ambiguity.
+Over-reliance on prominent or high-frequency entities when resolving ambiguity.
 
 The model prefers:
 
-* well-known artists
-* canonical authors
-* high-frequency references
+- well-known artists  
+- canonical figures  
+- dominant references  
 
-even when they are incorrect in context.
+even when incorrect in context.
 
 ---
 
 ### 6. Literary Bias
 
-A specific form of salience bias where:
+A stylistic bias where linguistic tone is incorrectly mapped to canonical or literary sources.
 
-* phrases with a literary tone are incorrectly attributed to canonical authors
+Example:
 
-**Example pattern:**
-
-* attributing modern lyrics to classical poetry
+- attributing modern expressions to classical literature  
 
 ---
 
 ### 7. Failure to Ask for Clarification
 
-The model proceeds to answer despite clear ambiguity.
+The model answers despite clear ambiguity.
 
-This is a **decision-level failure**, not just a knowledge error.
+Expected behavior:
 
-Expected behavior in such cases:
+> request clarification when multiple interpretations are plausible  
 
-> ask the user to disambiguate between multiple plausible interpretations
-
-#### Iterative Failure to Ask for Clarification
-
-A more severe form of this failure occurs when the model:
-
-- produces multiple plausible but incorrect hypotheses  
-- receives corrective feedback  
-- continues to generate new guesses instead of switching strategy  
-
-In these cases, the model fails to transition from:
-
-> answer generation  
-
-to:
-
-> clarification request  
-
-This results in:
-
-- cascading misidentifications  
-- overconfident iterative guessing  
-- delayed or absent abstention  
-
-This pattern is especially common in culturally ambiguous contexts with multiple plausible anchors, and is explicitly modeled in this repository's dataset.
+This represents a **decision-level failure**, not a knowledge limitation.
 
 ---
 
-### 8. Parody Source Loss
+### 8. Iterative Failure to Seek Clarification  
+*(represented in the dataset as `iterative_misidentification`)*
 
-Failure to correctly link a cultural reference to its parodic or derivative form.
+A stronger form of the previous failure.
 
-The model may:
+The model:
 
-- correctly identify the original source  
-- fail to retrieve the local adaptation or parody  
-- collapse both into a single referent  
+- generates multiple plausible but incorrect hypotheses  
+- receives corrective signals  
+- continues generating plausible guesses instead of changing strategy  
 
-This reflects a loss of relational structure between:
+This reflects failure to transition from:
+
+> answer generation → clarification request  
+
+---
+
+### 9. Parody Source Loss
+
+Failure to preserve relationships between:
 
 > original work ↔ adaptation ↔ parody  
 
-**Typical patterns:**
+The model may:
 
-- identifying the original international work but not its local version  
-- ignoring culturally specific reinterpretations  
-- prioritizing canonical sources over local variants  
-
-This failure is particularly relevant in domains where parody and adaptation are common, such as:
-
-- music  
-- television  
-- comedy and revue  
+- identify the original but not the parody  
+- collapse multiple layers into a single referent  
 
 ---
 
-### 9. Cross-Case Contamination
+### 10. Cross-Case Contamination
 
-Failure where the model incorrectly combines elements from multiple culturally related references.
+Incorrect blending of elements from multiple related cultural references.
 
-Instead of selecting a single plausible interpretation, the model:
+The model:
 
-- activates a cultural cluster (e.g. advertising, music, TV)  
-- retrieves elements from different cases within that cluster  
-- merges them into a single, coherent but incorrect response  
+- activates a cultural cluster  
+- retrieves partial elements from different cases  
+- merges them into a coherent but incorrect response  
 
-**Typical patterns:**
+This often occurs when multiple partially activated candidates are not properly resolved.
 
-- mixing slogans from different brands  
-- combining entities from related cultural domains  
-- attributing a phrase correctly but linking it to the wrong context or persona  
+---
 
-This results in outputs that are:
+## Cross-Cutting Phenomena: Overconfidence under Ambiguity
 
-- semantically plausible  
-- culturally coherent at a superficial level  
-- but factually incorrect due to cross-case blending  
+The model produces a confident response despite insufficient grounding.
+
+This phenomenon is not encoded as a separate label in the dataset, but emerges consistently across observed failure patterns.
+
+It reflects a mismatch between:
+
+> epistemic uncertainty  
+> and expressed confidence  
 
 ---
 
 ## Intended Use
 
-This taxonomy is designed to support:
+This taxonomy supports:
 
-* qualitative analysis of LLM outputs
-* construction of evaluation datasets
-* development of explainable disambiguation systems
-* identification of failure modes beyond standard hallucination metrics
+- qualitative analysis of LLM outputs  
+- construction of evaluation datasets  
+- development of explainable disambiguation systems  
+- identification of failure modes beyond standard hallucination metrics  
 
 ---
 
@@ -221,18 +270,17 @@ This taxonomy is designed to support:
 
 This taxonomy is intentionally:
 
-* **minimal** → easy to apply
-* **interpretable** → no hidden assumptions
-* **extensible** → new categories can be added as needed
+- **minimal** → easy to apply  
+- **interpretable** → no hidden assumptions  
+- **extensible** → new categories can be added  
 
-It reflects a working hypothesis:
-
-> cultural ambiguity is a distinct and underexplored failure mode in language models
-
+---
 
 ## Label Mapping (EDN ↔ Taxonomy)
 
-The following labels are used in the dataset (`cases.edn`) and map directly to the categories defined above:
+The following labels are used in the dataset (`cases.edn`) and map directly to the categories defined above.
+
+These labels are intentionally limited to **annotatable phenomena**, and do not include higher-level or cross-cutting concepts.
 
 - cultural_misidentification → Cultural Misidentification  
 - entity_misgrounding → Entity Misgrounding  
@@ -241,10 +289,6 @@ The following labels are used in the dataset (`cases.edn`) and map directly to t
 - salience_bias → Salience Bias  
 - literary_bias → Literary Bias  
 - failure_to_ask_clarification → Failure to Ask for Clarification  
-- iterative_misidentification → Iterative Failure to Ask for Clarification  
+- iterative_misidentification → Iterative Failure to Seek Clarification  
 - parody_source_loss → Parody Source Loss  
-
-
-It reflects a working hypothesis:
-
-> cultural ambiguity is a distinct and underexplored failure mode in language models
+- cross_case_contamination → Cross-Case Contamination  

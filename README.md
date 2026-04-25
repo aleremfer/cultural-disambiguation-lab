@@ -24,9 +24,10 @@ https://doi.org/10.5281/zenodo.19729897
 
 If you use this dataset or concept, please cite:
 
-Remeseiro Fernández, Alejandro (2026).
-*Cultural Anchor Loss (CAL)*.
-Zenodo. https://doi.org/10.5281/zenodo.19729897
+Remeseiro Fernández, Alejandro. 
+“Cultural Anchor Loss and Related Failure Patterns 
+in Large Language Models: Evidence from Spanish Popular Culture”. 
+Zenodo, April 24, 2026. https://doi.org/10.5281/zenodo.19729897.
 
 ---
 

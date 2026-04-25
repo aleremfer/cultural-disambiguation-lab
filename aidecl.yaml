@@ -1,0 +1,53 @@
+schema_version: "1.0.0"
+
+project:
+  name: "cultural-disambiguation-lab"
+  version: "1.0.0"
+  content_type: "dataset_and_research"
+  license: "CC BY 4.0"
+  repository: "https://github.com/aleremfer/cultural-disambiguation-lab"
+  related_publication: "https://zenodo.org/records/19729897"
+
+ai_usage:
+  used: true
+  summary: "AI models (GPT-4.5 and GPT-5) were used as test subjects in structured adversarial evaluations. Claude was used as a research interlocutor during conceptual development. No AI was used to generate the dataset, the case documentation, or the disambiguation rules."
+  level: "low"
+  activities:
+    - evaluation_subject
+    - conceptual_discussion
+  tools:
+    - name: "GPT-4.5"
+      vendor: "OpenAI"
+      type: "evaluation_subject"
+      purpose:
+        - adversarial_testing
+    - name: "GPT-5"
+      vendor: "OpenAI"
+      type: "evaluation_subject"
+      purpose:
+        - adversarial_testing
+    - name: "Claude"
+      vendor: "Anthropic"
+      type: "assistant"
+      purpose:
+        - conceptual_development
+  ai_proportion:
+    qualitative: mostly_human
+    method: self_reported
+
+governance:
+  responsible_officer: "Alejandro Remeseiro Fernández"
+  ethics_review_status: "not_applicable"
+
+environmental:
+  compute_hours: 0.1
+  estimation_method: self_estimated
+
+security:
+  review_performed: true
+  review_type:
+    - human_in_the_loop
+
+declaration:
+  date: "2026-04-24"
+  declared_by: "Alejandro Remeseiro Fernández"

@@ -167,6 +167,10 @@ Total: 6
 ```
 ---
 
+This repository includes an `aidecl.yaml` file following the [AI Declaration Format](https://ai-declaration.org) by the [ai-declaration](https://github.com/ai-declaration) project, for transparency on AI usage.
+
+---
+
 ## License
 
 This project is released under **Creative Commons Attribution 4.0 International (CC BY 4.0)**.
